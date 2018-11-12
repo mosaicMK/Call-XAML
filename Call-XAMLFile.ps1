@@ -21,11 +21,10 @@ try{
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object{ Set-Variable -Name "WPF_$($_.Name)" -Value $mainForm.FindName($_.Name) -ErrorAction Stop}
 #===========================================================================
 # Uses this to get the variables that are loaded into the script from the XAML
-# Function Get-FormVariables{
-# if ($global:ReadmeDisplay -ne $true){Write-host "If you need to reference this display again, run Get-FormVariables" -ForegroundColor Yellow;$global:ReadmeDisplay=$true}
-# write-host "Found the following interactable elements from our form" -ForegroundColor Cyan
-# get-variable WPF*
-# }
+Function Get-FormVariables{
+  write-host "Found the following objects:"
+  get-variable WPF_*
+}
 # Get-FormVariables
 #===========================================================================
 
